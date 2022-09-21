@@ -1,0 +1,4 @@
+##Toignore
+/Feature_Files/
+/venv/
+/.idea/
