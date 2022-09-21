@@ -3,14 +3,12 @@
 This repository contains the relevant codes for Toyota Smarthome Untrimmed (TSU) datasets.
 The dataset description and original video can be request in this [project page](https://project.inria.fr/toyotasmarthome/).
 
-- Pipline: The action detection baseline code for the TSU dataset. 
+- Pipline: The action detection baseline code for the TSU dataset (Feature Extraction + Temporal modelling). 
 
 - Other version: The joint-view and balanced version of the TSU dataset. 
 
 - Tools 
   - Pose Visualization: the visualization of the provided pose data
-  - ...
-  
 
 
 If you find our repo or paper useful, please cite us as
