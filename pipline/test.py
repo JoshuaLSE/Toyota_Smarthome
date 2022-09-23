@@ -95,12 +95,11 @@ if args.dataset == 'TSU':
         train_split = './data/smarthome_CV_51.json'
         test_split = './data/smarthome_CV_51.json'
     
-    rgb_root = '/data/stars/user/rdai/smarthome_untrimmed/features/i3d_16frames_64000_SSD'
+    rgb_root = './TSU_RGB_i3d_feat/RGB_i3d_16frames_64000_SSD'
     skeleton_root='/skeleton/feat/Path/' # 
 
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
-
 
 def load_data_rgb_skeleton(train_split, val_split, root_skeleton, root_rgb):
     # Load Data
