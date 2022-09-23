@@ -4,3 +4,4 @@
 /.idea/
 pipline/PDAN_TSU_RGB
 pipline/TSU_RGB_i3d_feat
+pipline/__pycache__
