@@ -17,7 +17,7 @@ def str2bool(v):
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-mode', type=str, help='rgb or flow (or joint for eval)', default='rgb')  # set default to rgb
-parser.add_argument('-train', type=str2bool, default='False', help='train or eval')  # Train true to false
+parser.add_argument('-train', type=str2bool, default='True', help='train or eval')  # Train true to false
 parser.add_argument('-comp_info', type=str, default='TSU_CS_RGB_PDAN') # Default set to TSU_CS_RGB_PDAN
 parser.add_argument('-rgb_model_file', type=str)
 parser.add_argument('-flow_model_file', type=str)
@@ -27,14 +27,14 @@ parser.add_argument('-rgb_root', type=str, default='no_root')
 parser.add_argument('-flow_root', type=str, default='no_root')
 parser.add_argument('-type', type=str, default='original')
 parser.add_argument('-lr', type=str, default='0.0002')  # Default changed 0.1 to 0.0002
-parser.add_argument('-epoch', type=str, default='140')  # Default changed 50 to 140
+parser.add_argument('-epoch', type=str, default='1')  # Default changed 50 to 140
 parser.add_argument('-model', type=str, default='PDAN')  # Default set to PDAN
 parser.add_argument('-APtype', type=str, default='map')  # Change wap to map
 parser.add_argument('-randomseed', type=str, default='False')
-parser.add_argument('-load_model', type=str, default='False')
+parser.add_argument('-load_model', type=str, default='./PDAN_TSU_RGB')
 parser.add_argument('-num_channel', type=str, default='512')  # Change false to 512
-parser.add_argument('-batch_size', type=str, default='2')  # Change false to 2
-parser.add_argument('-kernelsize', type=str, default='3')  # Change false to 3
+parser.add_argument('-batch_size', type=str, default='1')  # Change false to 2/1
+parser.add_argument('-kernelsize', type=str, default='2')  # Change false to 3/2
 parser.add_argument('-feat', type=str, default='False')
 parser.add_argument('-split_setting', type=str, default='CS')  # Default set to CS
 args = parser.parse_args()
@@ -274,7 +274,6 @@ def val_step(model, gpu, dataloader, epoch):
     print('val-map:', val_map)
     print(100 * apm.value())
     apm.reset()
-
     return full_probs, epoch_loss, val_map
 
 
@@ -330,6 +329,3 @@ if __name__ == '__main__':
         optimizer = optim.Adam(model.parameters(), lr=lr)
         lr_sched = optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=0.5, patience=8, verbose=True)
         run([(model, 0, dataloaders, optimizer, lr_sched, args.comp_info)], criterion, num_epochs=int(args.epoch))
-
-
-
